@@ -103,53 +103,7 @@ getEle("addItem").onclick = () => {
   toDo = [...toDo, task];
   renderToDo(toDo);
   getEle("newTask").value = "";
-};
-
-// remove task at toDo
-window.removeToDo = (ele) => {
-  toDo = toDo.filter((item) => item !== ele);
-  renderToDo(toDo);
-};
-
-// remove task at completed
-window.removeCompleted = (ele) => {
-  completed = completed.filter((item) => item !== ele);
-  renderCompleted(completed);
-};
-
-// complete task at toDo and move to completed
-window.completeToDo = (ele) => {
-  toDo = toDo.filter((item) => item !== ele);
-  renderToDo(toDo);
-
-  completed = [...completed, ele];
-  renderCompleted(completed);
-};
-
-//sort a -> z
-getEle("two").onclick = () => {
-  toDo = toDo.sort((a, b) => {
-    return a > b ? 1 : -1;
-  });
-  renderToDo(toDo);
-
-  completed = completed.sort((a, b) => {
-    return a > b ? 1 : -1;
-  });
-  renderCompleted(completed);
-};
-
-//sort z -> a
-getEle("three").onclick = () => {
-  toDo = toDo.sort((a, b) => {
-    return b > a ? 1 : -1;
-  });
-  renderToDo(toDo);
-
-  completed = completed.sort((a, b) => {
-    return b > a ? 1 : -1;
-  });
-  renderCompleted(completed);
+  setLocalStorage();
 };
 
 // localStorage
@@ -164,7 +118,70 @@ const setLocalStorage = () => {
 const getLocalStorage = () => {
   const stringifyToDo = localStorage.getItem("TO DO");
   toDo = stringifyToDo ? JSON.parse(stringifyToDo) : [];
+  renderToDo(toDo);
 
   const stringifyCompleted = localStorage.getItem("COMPLETED");
-  toDo = stringifyCompleted ? JSON.parse(stringifyCompleted) : [];
+  completed = stringifyCompleted ? JSON.parse(stringifyCompleted) : [];
+  renderCompleted(completed);
 };
+
+getLocalStorage();
+
+// remove task at toDo
+window.removeToDo = (ele) => {
+  toDo = toDo.filter((item) => item !== ele);
+  renderToDo(toDo);
+  setLocalStorage();
+};
+
+// remove task at completed
+window.removeCompleted = (ele) => {
+  completed = completed.filter((item) => item !== ele);
+  renderCompleted(completed);
+  setLocalStorage();
+};
+
+// complete task at toDo and move to completed
+window.completeToDo = (ele) => {
+  toDo = toDo.filter((item) => item !== ele);
+  renderToDo(toDo);
+
+  completed = [...completed, ele];
+  renderCompleted(completed);
+
+  setLocalStorage();
+};
+
+// filter completed tasks
+getEle("one").onclick = () => {};
+
+//sort a -> z
+getEle("two").onclick = () => {
+  toDo = toDo.sort((a, b) => {
+    return a > b ? 1 : -1;
+  });
+  renderToDo(toDo);
+
+  completed = completed.sort((a, b) => {
+    return a > b ? 1 : -1;
+  });
+  renderCompleted(completed);
+
+  setLocalStorage();
+};
+
+//sort z -> a
+getEle("three").onclick = () => {
+  toDo = toDo.sort((a, b) => {
+    return b > a ? 1 : -1;
+  });
+  renderToDo(toDo);
+
+  completed = completed.sort((a, b) => {
+    return b > a ? 1 : -1;
+  });
+  renderCompleted(completed);
+
+  setLocalStorage();
+};
+
