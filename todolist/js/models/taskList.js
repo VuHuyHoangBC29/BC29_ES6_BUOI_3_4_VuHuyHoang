@@ -1,12 +1,23 @@
 export class TaskList {
-  taskList = [];
-  selectedType = "all";
+  toDo = [];
+  completed = [];
 
-  addTask(task) {
-    this.taskList = [...this.taskList, task];
+  addToDo(task) {
+    this.toDo = [...this.toDo, task];
   }
 
-  removeTask(id) {
-    this.taskList = this.taskList.filter((ele) => ele.id !== id);
+  removeToDo(id) {
+    this.toDo = this.toDo.filter((ele) => ele.id !== +id);
   }
+
+  addCompleted(task) {
+    this.completed = [...this.completed, task];
+  }
+
+  removeCompleted(id) {
+    this.completed = this.completed.filter((ele) => ele.id !== +id);
+  }
+  // removeCompleted(id) {
+  //   this.toDo = this.toDo.filter((ele) => ele.id !== +id)
+  // }
 }
