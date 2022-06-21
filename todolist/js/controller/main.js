@@ -126,14 +126,16 @@ window.removeCompleted = (id) => {
 
 //sort a -> z
 getEle("two").onclick = () => {
- service.toDo.sort((a, b) => {
-    return a > b ? 1 : -1;
-  });
+   service.toDo.sort((a, b) => {
+      return a.description > b.description ? 1 : -1;
+    });
+  // const sortAZToDo = service.sortAZToDo();
   renderToDo(service.toDo);
 
   service.completed.sort((a, b) => {
-    return a > b ? 1 : -1;
+    return a.description > b.description ? 1 : -1;
   });
+  // const sortAZCompleted = service.sortAZCompleted();
   renderCompleted(service.completed);
 
   setLocalStorage();
@@ -142,13 +144,15 @@ getEle("two").onclick = () => {
 //sort z -> a
 getEle("three").onclick = () => {
   service.toDo = service.toDo.sort((a, b) => {
-    return b > a ? 1 : -1;
+    return b.description > a.description ? 1 : -1;
   });
+  // const sortZAToDo = service.sortZAToDo();
   renderToDo(service.toDo);
 
   service.completed.sort((a, b) => {
-    return b > a ? 1 : -1;
+    return b.description > a.description ? 1 : -1;
   });
+  // const sortZACompleted = service.sortZACompleted();
   renderCompleted(service.completed);
 
   setLocalStorage();

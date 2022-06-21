@@ -17,6 +17,31 @@ export class TaskList {
   removeCompleted(id) {
     this.completed = this.completed.filter((ele) => ele.id !== +id);
   }
+
+  // sortAZToDo() {
+  //   this.toDo.sort((a, b) => {
+  //     return a.description > b.description ? 1 : -1 ;
+  //   });
+  // }
+
+  // sortAZCompleted() {
+  //   this.completed.sort((a, b) => {
+  //     return a.description > b.description ? 1 : -1;
+  //   });
+  // }
+
+  // sortZAToDo() {
+  //   this.toDo.sort((a, b) => {
+  //     return b.description > a.description ? 1 : -1;
+  //   });
+  // }
+
+  // sortZACompleted() {
+  //   this.completed.sort((a, b) => {
+  //     return b.description > a.description ? 1 : -1;
+  //   });
+  // }
+
   // removeCompleted(id) {
   //   this.toDo = this.toDo.filter((ele) => ele.id !== +id)
   // }
